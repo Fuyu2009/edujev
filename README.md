@@ -4,13 +4,16 @@
 
 它不生成自然语言，因此没有解析错误，也不会编造评语。
 
-本仓库提供**推理代码、模型说明与示例**。模型权重不在此仓库中（体积 644 MB），请从 Hugging Face 获取：
+本仓库提供**推理代码、模型说明与示例**。模型权重不在此仓库中（体积 644 MB），可从 Hugging Face 或 ModelScope（魔搭）获取：
 
-> **权重下载**：`https://huggingface.co/fuyu2009/edujev-1.1`
->
-> 用一条命令即可拉到本地：
+> **权重下载（Hugging Face）**：`https://huggingface.co/fuyu2009/edujev-1.1`
 > ```bash
 > huggingface-cli download fuyu2009/edujev-1.1 --local-dir ./model
+> ```
+>
+> **权重下载（ModelScope / 魔搭，国内镜像）**：`https://modelscope.cn/models/fuyu2009/edujev-1.1`
+> ```bash
+> modelscope download fuyu2009/edujev-1.1 --local_dir ./model
 > ```
 
 ---
@@ -39,7 +42,7 @@
 # 1. 装依赖
 pip install -r requirements.txt
 
-# 2. 拉权重（约 644 MB）
+# 2. 拉权重（约 644 MB；国内可用魔搭：modelscope download fuyu2009/edujev-1.1 --local_dir ./model）
 huggingface-cli download fuyu2009/edujev-1.1 --local-dir ./model
 
 # 3. 跑示例
