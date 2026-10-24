@@ -1,0 +1,18 @@
+# EduJev 1.1 推理依赖
+# 以下版本为实测通过组合（Python 3.13.14 / CUDA 12.6 / RTX 4050 Laptop 6GB）
+
+laya==0.3.24
+torch>=2.14.0
+transformers>=5.18.0
+safetensors>=0.8.0
+tokenizers>=0.23.0
+numpy>=2.0.0
+huggingface-hub>=1.33.0
+
+# 说明
+# - `laya` 提供 build_model / build_sequence / amp_dtype 等加载与构序函数，
+#   是本模型的必需依赖（模型权重本身即 Laya 的微调产物）。
+# - 若只需在 CPU 上运行，装 torch 的 CPU 版本即可，但速度约 1.3 题/秒，
+#   一份 2,394 题的作业约需 30 分钟。
+# - transformers 低于 5.x 时，tokenizer_config.json 的加载可能报错；
+#   若遇到，可调用 laya.agent._fix_tokenizer_config(<tokenizer_dir>) 修复。

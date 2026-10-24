@@ -1,0 +1,69 @@
+EduJev 1.1
+Copyright 2026 付愉
+
+This product is a fine-tuned derivative of the Laya multilingual model.
+
+--------------------------------------------------------------------------
+Upstream attribution
+--------------------------------------------------------------------------
+
+1. Laya (multilingual checkpoint)
+   Provider : Convai Innovations
+   Source   : https://huggingface.co/convaiinnovations/laya
+   License  : Apache License 2.0
+   Role     : base model for this fine-tune (encoder + decision head)
+
+2. mmBERT-base
+   Provider : JHU CLSP
+   Source   : https://huggingface.co/jhu-clsp/mmBERT-base
+   License  : Apache License 2.0
+   Role     : encoder backbone of Laya multilingual
+              (ModernBERT architecture, 22 layers, hidden 768,
+               vocab 256,000, 321,908,998 parameters in this checkpoint)
+
+The modifications made in EduJev 1.1 relative to the Laya base checkpoint
+consist solely of supervised fine-tuning of the existing weights on a
+Chinese/English K-12 short-answer grading dataset. No layers were added,
+removed, or structurally altered.
+
+--------------------------------------------------------------------------
+Modification notice (Apache License 2.0, Section 4(b))
+--------------------------------------------------------------------------
+
+Files changed relative to the upstream checkpoint:
+
+  model.safetensors      - weights updated by supervised fine-tuning
+  rl_agent_config.json   - "temperature" refitted on the grading validation
+                           set, value [3.68488, 5.15, 6.383389];
+                           "max_len" left at 1024 as used in this release
+
+Files unchanged from upstream:
+
+  encoder/config.json
+  tokenizer/tokenizer.json
+  tokenizer/tokenizer_config.json
+
+--------------------------------------------------------------------------
+Dataset notice
+--------------------------------------------------------------------------
+
+This model was fine-tuned on a mixture that includes SAS-Bench
+(https://huggingface.co/datasets/aleversn/SAS-Bench), which is distributed
+under Apache License 2.0 with an accompanying statement that the dataset is
+"available for research purposes only", and TAL-SCQ5K
+(https://github.com/math-eval/TAL-SCQ5K, MIT).
+
+No dataset files are redistributed in this repository. Model weights are a
+statistical artifact of training; they do not contain dataset records
+verbatim, and the source data cannot be reconstructed from them. Users who
+intend to use this model commercially should independently evaluate the
+terms of the upstream datasets with their own legal counsel.
+
+--------------------------------------------------------------------------
+Third-party names
+--------------------------------------------------------------------------
+
+"Laya", "Convai Innovations", "mmBERT", "ModernBERT", "SAS-Bench" and
+"TAL-SCQ5K" are the property of their respective owners. Their mention here
+is descriptive attribution only and does not imply endorsement of, or
+affiliation with, EduJev.
